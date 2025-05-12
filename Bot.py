@@ -13,4 +13,13 @@ def welcome(message):
     bot.reply_to(message, 'hi friend')
 
 
+# answering by type
+@bot.message_handler(content_types=['audio', 'document'])
+def audio(message):
+    if message.audio:
+        bot.reply_to(message, 'thank you for send me audio')
+    elif message.document:
+        bot.reply_to(message, 'thank you for send me document')
+
+
 bot.polling()
