@@ -22,4 +22,10 @@ def audio(message):
         bot.reply_to(message, 'thank you for send me document')
 
 
+# search in message
+@bot.message_handler(regexp='alfa')
+def regexp(message):
+    bot.reply_to(message, 'alfa is here')
+
+
 bot.polling()
