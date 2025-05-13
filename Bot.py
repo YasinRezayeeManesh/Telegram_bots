@@ -28,4 +28,22 @@ def regexp(message):
     bot.reply_to(message, 'alfa is here')
 
 
+# First conversation with a robot
+@bot.message_handler(commands=['talk'])
+def conversation(message):
+    bot.reply_to(message, 'hello 👋 \nwhat is your name?')
+    bot.register_next_step_handler(message, name)
+
+
+def name(message):
+    client_name = message.text
+    bot.send_message(message.chat.id, f"Hello {client_name}! how old are you?")
+    bot.register_next_step_handler(message, age)
+
+
+def age(message):
+    client_age = message.text
+    bot.send_message(message.chat.id, f"you are {client_age} years old \nthank you!")
+
+
 bot.polling()
