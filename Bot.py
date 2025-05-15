@@ -1,5 +1,5 @@
 import telebot
-
+from telebot.types import InlineKeyboardButton, InlineKeyboardMarkup
 
 bot = telebot.TeleBot("7678641734:AAGoZYh-x0evr3NLReW0ZXUo-cQxNAEOx1w")
 
@@ -44,6 +44,28 @@ def name(message):
 def age(message):
     client_age = message.text
     bot.send_message(message.chat.id, f"you are {client_age} years old \nthank you!")
+
+
+# create buttons
+button1 = InlineKeyboardButton(text="alfa button", callback_data="alfa")
+button2 = InlineKeyboardButton(text="beta button", callback_data="beta")
+inline_keyboards = InlineKeyboardMarkup(row_width=1)
+inline_keyboards.add(button1, button2)
+
+
+# show buttons
+@bot.message_handler(commands=['button'])
+def buttons(message):
+    bot.send_message(message.chat.id, 'button list 👇', reply_markup=inline_keyboards)
+
+
+# callback buttons
+@bot.callback_query_handler(func=lambda call: True)
+def callback(call):
+    if call.data == "alfa":
+        bot.answer_callback_query(call.id, 'answer alfa', show_alert=True)
+    elif call.data == "beta":
+        bot.answer_callback_query(call.id, 'answer beta')
 
 
 bot.polling()
