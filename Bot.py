@@ -1,5 +1,5 @@
 import telebot
-from telebot.types import InlineKeyboardButton, InlineKeyboardMarkup
+from telebot.types import InlineKeyboardButton, InlineKeyboardMarkup, ReplyKeyboardMarkup
 
 bot = telebot.TeleBot("7678641734:AAGoZYh-x0evr3NLReW0ZXUo-cQxNAEOx1w")
 
@@ -66,6 +66,26 @@ def callback(call):
         bot.answer_callback_query(call.id, 'answer alfa', show_alert=True)
     elif call.data == "beta":
         bot.answer_callback_query(call.id, 'answer beta')
+
+
+# Reply Button
+reply_button = ReplyKeyboardMarkup(resize_keyboard=True, one_time_keyboard=False)
+reply_button.add("theta button", "lota button")
+
+
+@bot.message_handler(commands=['keyboard_button'])
+def keyboard_button(message):
+    bot.reply_to(message, "Chose the button", reply_markup=reply_button)
+
+
+@bot.message_handler(func=lambda message: True)
+def callback_keyboard_btn(message):
+    if message.text == "theta button":
+        bot.reply_to(message, "you chose theta btn")
+    elif message.text == "lota button":
+        bot.reply_to(message, "you chose lota btn")
+    else:
+        bot.reply_to(message, f"your message is {message.text}")
 
 
 bot.polling()
