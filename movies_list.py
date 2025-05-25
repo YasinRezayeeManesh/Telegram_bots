@@ -44,7 +44,7 @@ def list_movies(message):
     else:
         text = "هیچ فیلمی در دیتابیس ذخیره نشده !"
 
-    bot.send_message(message.chat.id, text)
+    bot.reply_to(message, text)
 
 
 bot.polling()
