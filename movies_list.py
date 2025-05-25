@@ -14,6 +14,15 @@ with sqlite3.connect('movies_list.db') as connection:
     """)
 
 
+def get_movie_db():
+    connect = sqlite3.connect('movies_list.db')
+    curs = connect.cursor()
+    curs.execute("Select name From movies_list")
+    movies = [row[0] for row in curs.fetchall()]
+    connect.close()
+    return movies
+
+
 @bot.message_handler(commands=['add'])
 def add_movie(message):
     pass
