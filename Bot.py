@@ -95,7 +95,7 @@ keyboard = ReplyKeyboardMarkup(resize_keyboard=True, row_width=1)
 button = KeyboardButton(text='send info', request_contact=True)
 keyboard.add(button)
 
-with sqlite3.connect('user.db') as connection:
+with sqlite3.connect('Bot.db') as connection:
     cursor = connection.cursor()
     create_table_query = """
         CREATE TABLE IF NOT EXISTS users(
@@ -115,7 +115,7 @@ def testdb(message):
 
 @bot.message_handler(content_types=['contact'])
 def contact(message):
-    with sqlite3.connect('user.db') as connection2:
+    with sqlite3.connect('Bot.db') as connection2:
         cursor2 = connection2.cursor()
         insert_data_query = """
             INSERT INTO users (id, first_name, last_name, phone)

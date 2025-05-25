@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="user" uuid="53416fc8-e4d6-4e5a-a2ae-480b0d6bdd91">
+    <data-source source="LOCAL" name="movies_list" uuid="b69a70f8-936c-434a-9eb5-8f45e1523111">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:D:\Programming\Bot\user.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:D:\Programming\Bot\movies_list.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
       <libraries>
         <library>
@@ -16,11 +16,11 @@
         </library>
       </libraries>
     </data-source>
-    <data-source source="LOCAL" name="movies_list" uuid="b69a70f8-936c-434a-9eb5-8f45e1523111">
+    <data-source source="LOCAL" name="Bot" uuid="7adf8a11-66fb-40a7-afc5-0bd4a6de52db">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:D:\Programming\Bot\movies_list.db</jdbc-url>
+      <jdbc-url>jdbc:sqlite:D:\Programming\Bot\Bot.db</jdbc-url>
       <working-dir>$ProjectFileDir$</working-dir>
       <libraries>
         <library>
