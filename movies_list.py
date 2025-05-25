@@ -33,7 +33,12 @@ def get_movie_db():
 
 @bot.message_handler(commands=['add'])
 def add_movie(message):
-    pass
+    try:
+        title = message.text.split(" ", 1)[1]
+        add_movie_db(title)
+        bot.reply_to(message, "با موفقیت در دیتابیس ذخیره شد ✅")
+    except IndexError:
+        bot.reply_to(message, "لطفا اسم فیلم را بعد از دستور /add بنویس")
 
 
 @bot.message_handler(commands=["list"])
@@ -42,7 +47,7 @@ def list_movies(message):
     if movies:
         text = '\n'.join(movies)
     else:
-        text = "هیچ فیلمی در دیتابیس ذخیره نشده !"
+        text = "هیچ فیلمی در دیتابیس ذخیره نشده ⭕"
 
     bot.reply_to(message, text)
 
