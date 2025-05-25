@@ -17,7 +17,7 @@ with sqlite3.connect('movies_list.db') as connection:
 def get_movie_db():
     connect = sqlite3.connect('movies_list.db')
     curs = connect.cursor()
-    curs.execute("Select title From movies_list")
+    curs.execute("SELECT title FROM movies_list")
     movies = [row[0] for row in curs.fetchall()]
     connect.close()
     return movies
