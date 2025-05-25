@@ -17,7 +17,7 @@ with sqlite3.connect('movies_list.db') as connection:
 def add_movie_db(title):
     connect = sqlite3.connect('movies_list.db')
     curs = connect.cursor()
-    curs.execute("INSERT INTO movies_list (title) VALUES (?)", (title,))
+    curs.execute("INSERT INTO movies (title) VALUES (?)", (title,))
     connect.commit()
     connect.close()
 
@@ -25,7 +25,7 @@ def add_movie_db(title):
 def get_movie_db():
     connect = sqlite3.connect('movies_list.db')
     curs = connect.cursor()
-    curs.execute("SELECT title FROM movies_list")
+    curs.execute("SELECT title FROM movies")
     movies = [row[0] for row in curs.fetchall()]
     connect.close()
     return movies
@@ -38,7 +38,13 @@ def add_movie(message):
 
 @bot.message_handler(commands=["list"])
 def list_movies(message):
-    pass
+    movies = get_movie_db()
+    if movies:
+        text = '\n'.join(movies)
+    else:
+        text = "هیچ فیلمی در دیتابیس ذخیره نشده !"
+
+    bot.send_message(message.chat.id, text)
 
 
 bot.polling()
