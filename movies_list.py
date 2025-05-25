@@ -14,6 +14,14 @@ with sqlite3.connect('movies_list.db') as connection:
     """)
 
 
+def add_movie_db(title):
+    connect = sqlite3.connect('movies_list.db')
+    curs = connect.cursor()
+    curs.execute("INSERT INTO movies_list (title) VALUES (?)", (title,))
+    connect.commit()
+    connect.close()
+
+
 def get_movie_db():
     connect = sqlite3.connect('movies_list.db')
     curs = connect.cursor()
