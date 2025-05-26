@@ -4,6 +4,11 @@ import sqlite3
 bot = telebot.TeleBot("7967925856:AAFfzJpNV8R7iTwcHvWY-3XDEepV3zEumog")
 
 
+@bot.message_handler(commands=['start'])
+def start(message):
+    bot.send_message(message.chat.id, "خوش آمدید 👋 \n\n 💠 دستور /add  ==>  برای ذخیره سازی اطلاعات از این دستور استفاده کنید به گونه ای که ابتدا دستور و سپس متن دلخواه را بنویسید ، به عنوان مثال 👇 \n\n 🔰   add/ {کلمه} \n\n 💠 دستور /list  ==>  برای دریافت اطلاعات ذخیره شده از این دستور استفاده کنید")
+
+
 with sqlite3.connect('movies_list.db') as connection:
     curser = connection.cursor()
     curser.execute("""
