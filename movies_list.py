@@ -41,7 +41,7 @@ def add_movie(message):
     try:
         title = message.text.split(" ", 1)[1]
         add_movie_db(title)
-        bot.reply_to(message, "با موفقیت در دیتابیس ذخیره شد ✅")
+        bot.reply_to(message, "با موفقیت در دیتابیس ذخیره شد ✅ \n\n برای دریافت اطلاعات ذخیره شده از دستور /list استفاده کن")
     except IndexError:
         bot.reply_to(message, "لطفا اسم فیلم را بعد از دستور /add بنویس")
 
