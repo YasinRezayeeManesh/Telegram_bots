@@ -58,4 +58,4 @@ def list_movies(message):
     bot.reply_to(message, text)
 
 
-bot.polling()
+bot.infinity_polling()
