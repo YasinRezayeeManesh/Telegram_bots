@@ -2,6 +2,6 @@
 <project version="4">
   <component name="SqlDialectMappings">
     <file url="file://$PROJECT_DIR$/Bot.py" dialect="GenericSQL" />
-    <file url="file://$PROJECT_DIR$/movies_list.py" dialect="GenericSQL" />
+    <file url="file://$PROJECT_DIR$/info.py" dialect="GenericSQL" />
   </component>
 </project>
