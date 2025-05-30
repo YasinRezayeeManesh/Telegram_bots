@@ -9,6 +9,11 @@ if not os.path.exists("image_bot_photos"):
     os.makedirs("image_bot_photos")
 
 
+@bot.message_handler(commands=['start'])
+def start(message):
+    bot.reply_to(message, 'خوش آمدید 👋 \n\n 💠 برای ذخیره تصاویر خود کافیست آن را بدون هیچ پسوند یا پیشوندی ارسال کنید \n\n 💠 دستور /images ==> برای دریافت تصاویر ذخیره شده کافیست از این دستور استفاده کنید')
+
+
 def create_db():
     connection = sqlite3.connect("images.db")
     cursor = connection.cursor()
