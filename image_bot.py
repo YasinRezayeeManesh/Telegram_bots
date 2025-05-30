@@ -43,4 +43,19 @@ def get_image_path():
     return paths
 
 
+@bot.message_handler(commands=["save_pic"])
+def get_picture(message):
+    file_info = bot.get_file(message.photo-[-1].file_id)
+    downloaded_file = bot.download_file(file_info.file_path)
+    file_name = file_info.file_path.split("/")[-1]
+    file_path = os.path.join("image_bot_photos", file_name)
+
+    with open(file_path, 'wb') as new_file:
+        new_file.write(downloaded_file)
+
+    save_image_path(file_path)
+
+    bot.send_message(message.chat.id, 'تصویر مورد نظر با موفقیت در دیتابیس ذخیره شد ✅')
+
+
 bot.infinity_polling()
