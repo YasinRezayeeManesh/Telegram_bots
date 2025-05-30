@@ -25,4 +25,12 @@ def create_db():
 create_db()
 
 
+def save_image_path(path):
+    connection = sqlite3.connect("images.db")
+    cursor = connection.cursor()
+    cursor.execute("INSERT INTO image (path) VALUES (?)", (path,))
+    connection.commit()
+    connection.close()
+
+
 bot.infinity_polling()
