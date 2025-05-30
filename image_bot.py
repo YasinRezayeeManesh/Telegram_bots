@@ -58,4 +58,15 @@ def get_picture(message):
     bot.send_message(message.chat.id, 'تصویر مورد نظر با موفقیت در دیتابیس ذخیره شد ✅')
 
 
+@bot.message_handler(commands=["images"])
+def send_picture(message):
+    paths = get_image_path()
+    if paths:
+        for path in paths:
+            with open(path, "rb") as image:
+                bot.send_photo(message.chat.id, image)
+    else:
+        bot.send_message(message.chat.id, "هیچ تصویری ذخیره نشده ⭕")
+
+
 bot.infinity_polling()
