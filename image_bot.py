@@ -33,4 +33,14 @@ def save_image_path(path):
     connection.close()
 
 
+def get_image_path():
+    connection = sqlite3.connect("images.db")
+    cursor = connection.cursor()
+    cursor.execute("SELECT path FROM image")
+    paths = [row[0] for row in cursor.fetchall()]
+    connection.close()
+
+    return paths
+
+
 bot.infinity_polling()
