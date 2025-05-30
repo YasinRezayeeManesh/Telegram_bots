@@ -43,9 +43,9 @@ def get_image_path():
     return paths
 
 
-@bot.message_handler(commands=["save_pic"])
+@bot.message_handler(content_types=["photo"])
 def get_picture(message):
-    file_info = bot.get_file(message.photo-[-1].file_id)
+    file_info = bot.get_file(message.photo[-1].file_id)
     downloaded_file = bot.download_file(file_info.file_path)
     file_name = file_info.file_path.split("/")[-1]
     file_path = os.path.join("image_bot_photos", file_name)
