@@ -30,3 +30,21 @@ def save_video_path(path):
 
 
 bot.infinity_polling()
+
+
+@bot.message_handler(content_types=["video"])
+def get_video(message):
+    file_info = bot.get_file(message.video.file_id)
+    downloaded_file = bot.download_file(file_info.file_path)
+
+    file_name = file_info.file_path.split('/')[-1]
+    file_path = os.path.join('videos', file_name)
+
+    os.makedirs("videos", exist_ok=True)
+    with open(file_path, 'wb') as new_file:
+        new_file.write(downloaded_file)
+
+    save_video_path(file_path)
+
+    bot.send_message(message.chat.id, "ویدیو مورد نظر با موفقیت در دیتابیس ذخیره شد ✅")
+
