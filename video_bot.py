@@ -5,6 +5,11 @@ import os
 bot = telebot.TeleBot("8073560883:AAHxkl3eCKT5sh_ZatEyouRtBr3ZFSdMuP4")
 
 
+@bot.message_handler(commands=['start'])
+def start(message):
+    bot.send_message(message.chat.id, "خوش آمدید 👋 \n\n 💠 برای ذخیره ویدیو های خود کافیست آن را بدون هیچ پسوند یا پیشوندی ارسال کنید \n\n 💠 دستور /videos ==> برای دریافت ویدیو های ذخیره شده کافیست از این دستور استفاده کنید")
+
+
 def create_db():
     connection = sqlite3.connect("videos.db")
     cursor = connection.cursor()
