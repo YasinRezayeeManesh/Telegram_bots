@@ -29,9 +29,6 @@ def save_video_path(path):
     connection.close()
 
 
-bot.infinity_polling()
-
-
 @bot.message_handler(content_types=["video"])
 def get_video(message):
     file_info = bot.get_file(message.video.file_id)
@@ -48,3 +45,22 @@ def get_video(message):
 
     bot.send_message(message.chat.id, "ویدیو مورد نظر با موفقیت در دیتابیس ذخیره شد ✅")
 
+
+@bot.message_handler(content_types=["videos"])
+def send_videos(message):
+    connection = sqlite3.connect('videos.db')
+    cursor = connection.cursor()
+    cursor.execute("SELECT path FROM video")
+    videos = cursor.fetchall()
+    connection.close()
+
+    if videos:
+        for video in videos:
+            video_path = video[0]
+            with open(video_path) as video_file:
+                bot.send_video(message.chat.id, video_file)
+    else:
+        bot.send_message(message.chat.id, "هیچ ویدیویی در دیتابیس ذخیره نشده است ⭕")
+
+
+bot.infinity_polling()
