@@ -46,7 +46,7 @@ def get_video(message):
     bot.send_message(message.chat.id, "ویدیو مورد نظر با موفقیت در دیتابیس ذخیره شد ✅")
 
 
-@bot.message_handler(content_types=["videos"])
+@bot.message_handler(commands=["videos"])
 def send_videos(message):
     connection = sqlite3.connect('videos.db')
     cursor = connection.cursor()
@@ -57,7 +57,7 @@ def send_videos(message):
     if videos:
         for video in videos:
             video_path = video[0]
-            with open(video_path) as video_file:
+            with open(video_path, 'rb') as video_file:
                 bot.send_video(message.chat.id, video_file)
     else:
         bot.send_message(message.chat.id, "هیچ ویدیویی در دیتابیس ذخیره نشده است ⭕")
