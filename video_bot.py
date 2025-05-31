@@ -21,4 +21,12 @@ def create_db():
 create_db()
 
 
+def save_video_path(path):
+    connection = sqlite3.connect('videos.db')
+    cursor = connection.cursor()
+    cursor.execute("INSERT INTO video(path) VALUES (?)", (path,))
+    connection.commit()
+    connection.close()
+
+
 bot.infinity_polling()
