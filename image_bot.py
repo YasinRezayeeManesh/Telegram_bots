@@ -19,7 +19,7 @@ def create_db():
     cursor = connection.cursor()
     cursor.execute("""
         CREATE TABLE IF NOT EXISTS image(
-            id INTEGER PRIMARE KEY,
+            id INTEGER PRIMARY KEY,
             path TEXT
         )
     """)
