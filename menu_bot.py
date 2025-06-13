@@ -13,4 +13,9 @@ def main_menu():
     return markup
 
 
+@bot.message_handler(commands=['start'])
+def start(message):
+    bot.send_message(message.chat.id, "Please Chose Menu", reply_markup=main_menu())
+
+
 bot.infinity_polling()
