@@ -43,4 +43,10 @@ def start(message):
     bot.send_message(message.chat.id, "Please Chose Menu", reply_markup=main_menu())
 
 
+@bot.callback_query_handler(func=lambda call: True)
+def callback(call):
+    if call.data == 'menu 1':
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='You are in Menu 1', reply_markup=sub_menu_1())
+
+
 bot.infinity_polling()
