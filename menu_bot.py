@@ -31,7 +31,7 @@ def submenu_1_1():
 
 
 def submenu_1_2():
-    markup = InlineKeyboardMarkup()
+    markup = InlineKeyboardMarkup(row_width=1)
     button_1 = InlineKeyboardButton('Button 1-2', callback_data='button')
     return_button = InlineKeyboardButton('back', callback_data='back to submenu 1')
     markup.add(button_1, return_button)
@@ -47,6 +47,10 @@ def start(message):
 def callback(call):
     if call.data == 'menu 1':
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='You are in Menu 1', reply_markup=sub_menu_1())
+    elif call.data == 'submenu 1-1':
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='Your are in submenu 1-1', reply_markup=submenu_1_1())
+    elif call.data == 'submenu 1-2':
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='you are in submenu 1-2', reply_markup=submenu_1_2())
 
 
 bot.infinity_polling()
