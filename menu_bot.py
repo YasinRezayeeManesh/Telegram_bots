@@ -41,7 +41,7 @@ def submenu_1_2():
 def sub_menu_2():
     markup = InlineKeyboardMarkup(row_width=1)
     button_1 = InlineKeyboardButton('submenu 2-1', callback_data='submenu 2-1')
-    button_2 = InlineKeyboardButton('submenu 2-1', callback_data='submenu 2-2')
+    button_2 = InlineKeyboardButton('submenu 2-2', callback_data='submenu 2-2')
     return_button = InlineKeyboardButton('back', callback_data='back to main menu')
     markup.add(button_1, button_2, return_button)
     return markup
@@ -76,10 +76,18 @@ def callback(call):
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='Your are in submenu 1-1', reply_markup=submenu_1_1())
     elif call.data == 'submenu 1-2':
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='you are in submenu 1-2', reply_markup=submenu_1_2())
+    elif call.data == 'menu 2':
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='You are in Menu 2', reply_markup=sub_menu_2())
+    elif call.data == 'submenu 2-1':
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='You are in submenu 2-1', reply_markup=submenu_2_1())
+    elif call.data == 'submenu 2-2':
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='you are in submenu 2-2', reply_markup=submenu_2_2())
     elif call.data == 'back to main menu':
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='please chose menu', reply_markup=main_menu())
     elif call.data == 'back to submenu 1':
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='You are in Menu 1', reply_markup=sub_menu_1())
+    elif call.data == 'back to submenu 2':
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="You are in Menu 2", reply_markup=sub_menu_2())
 
 
 bot.infinity_polling()
