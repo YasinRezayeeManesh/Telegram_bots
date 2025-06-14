@@ -88,6 +88,8 @@ def callback(call):
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='You are in Menu 1', reply_markup=sub_menu_1())
     elif call.data == 'back to submenu 2':
         bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text="You are in Menu 2", reply_markup=sub_menu_2())
+    elif call.data == 'button':
+        bot.edit_message_text(chat_id=call.message.chat.id, message_id=call.message.message_id, text='thank you')
 
 
 bot.infinity_polling()
