@@ -38,6 +38,15 @@ def submenu_1_2():
     return markup
 
 
+def sub_menu_2():
+    markup = InlineKeyboardMarkup(row_width=1)
+    button_1 = InlineKeyboardButton('submenu 2-1', callback_data='submenu 2-1')
+    button_2 = InlineKeyboardButton('submenu 2-1', callback_data='submenu 2-2')
+    return_button = InlineKeyboardButton('back', callback_data='back to main menu')
+    markup.add(button_1, button_2, return_button)
+    return markup
+
+
 @bot.message_handler(commands=['start'])
 def start(message):
     bot.send_message(message.chat.id, "Please Chose Menu", reply_markup=main_menu())
